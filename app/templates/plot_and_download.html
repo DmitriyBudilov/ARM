@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="{{ url_for('plot_and_download') }}" method="post">
+        {{ form.csrf_token() }}
+        {{ form.date.label }}
+        {{ form.date }}
+        {{ form.time }}
+        {{ form.length.label }}
+        {{ form.length }}
+        {{ form.plot }}
+        {{ form.download }}
+    </form>
+    {% if data %}
+        <img src="data:image/png;base64, {{ data }}"/>
+    {% endif %}
+{% endblock %}
